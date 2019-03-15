@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import firebase from './firebase.js';
 
 class App extends Component {
+
+  componentDidMount(){
+    console.log(firebase.database().ref('pacientes'));
+  }
+
   render() {
     return (
       <div className="App">
