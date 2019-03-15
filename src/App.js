@@ -10,7 +10,6 @@ class App extends Component {
     console.log(firebase.database().ref('pacientes'));
     console.log("DB fin");
   }
-  
 
   render() {
     return (
