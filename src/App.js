@@ -6,7 +6,9 @@ import firebase from './firebase.js';
 class App extends Component {
 
   componentDidMount(){
+    console.log("DB init");
     console.log(firebase.database().ref('pacientes'));
+    console.log("DB fin");
   }
 
   render() {
