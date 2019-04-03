@@ -1,4 +1,3 @@
-
 import firebase from 'firebase'
 
 // Initialize Firebase
@@ -11,5 +10,5 @@ import firebase from 'firebase'
    messagingSenderId: "774004257613"
  };
  firebase.initializeApp(config);
-
+ 
  export default firebase;
