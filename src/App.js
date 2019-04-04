@@ -32,6 +32,8 @@ class App extends Component {
     this.getTestWithMostSubtests = this.getTestWithMostSubtests.bind(this);
     this.getTestWithMostItems= this.getTestWithMostItems.bind(this);
     this.getProtocolWithMostTests= this.getProtocolWithMostTests.bind(this);
+    this.getMostPatientWithMostProtocols= this.getMostPatientWithMostProtocols.bind(this);
+    this.getMostTestsApplied= this.getMostTestsApplied.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
 }
   componentWillMount(){
@@ -49,13 +51,15 @@ class App extends Component {
       this.getMostUsedProtocols();
     } else if (question === 2) {
       dbTable = this.state.firebaseDataResults;
+      this.getMostTestsApplied();
 
     } else if (question === 3) {
       dbTable = this.state.firebaseDataResults;
+      this.getMostPatientWithMostProtocols();
 
     } else if (question === 4) {
       dbTable = this.state.firebaseDataResults;
-
+      this.getMostPatientWithMostProtocols();
     } else if (question === 5) {
       dbTable = this.state.firebaseDataResults;
 
@@ -201,6 +205,68 @@ class App extends Component {
       newData.push(protocolData);
     }
 
+    this.setState({
+      graphData:newData
+    })
+  }
+
+  getMostPatientWithMostProtocols (){
+    var data = Object.values(this.state.firebaseDataResults);
+    var protocolData = {};
+    var newData = [];
+    var counts = data.reduce((p, c) => {
+      var pId = c.idPaciente;
+      if (!p.hasOwnProperty(pId)) {
+        p[pId] = 0;
+      }
+      p[pId]++;
+      return p;
+    }, {});
+
+    var countsArray = Object.entries(counts);
+    for(var i = 0; i<countsArray.length; i++){
+      protocolData = {
+        "id" : countsArray[i][0],
+        "value" : countsArray[i][1]
+      };
+      newData.push(protocolData);
+    }
+    this.setState({
+      graphData:newData
+    })
+  }
+
+  getMostTestsApplied (){
+    var data = Object.values(this.state.firebaseDataResults);
+    var protocolData = {};
+    var newData = [];
+    var testsList = [];
+
+    for(var i = 0; i<data.length;i++){
+      var test = Object.values(data[i].Bloques);
+      for(var j = 0; j<test.length;j++){
+        testsList.push(test[j].idTest);
+      }
+    }
+    console.log(testsList);
+    var counts = testsList.reduce((p, c) => {
+      var pId = c.idPaciente;
+      if (!p.hasOwnProperty(pId)) {
+        p[pId] = 0;
+      }
+      p[pId]++;
+      return p;
+    }, {});
+
+    var countsArray = Object.entries(counts);
+    console.log(countsArray);
+    for(var i = 0; i<countsArray.length; i++){
+      protocolData = {
+        "id" : countsArray[i][0],
+        "value" : countsArray[i][1]
+      };
+      newData.push(protocolData);
+    }
     this.setState({
       graphData:newData
     })
