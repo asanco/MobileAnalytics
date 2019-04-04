@@ -19,7 +19,10 @@ class App extends Component {
     firebaseDataTests:{},
     firebaseDataPatients:{},
     shownDatabaseTable : {},
-    graphData:[]
+    graphData:[{
+      "id" :0,
+      "value" : 0
+    }]
     };
 
     this.getResultsDatabase = this.getResultsDatabase.bind(this);
@@ -85,7 +88,6 @@ class App extends Component {
   getResultsDatabase = () => {
     firebase.database().ref('resultados/').once('value', function (snap){
     var data = JSON.parse(JSON.stringify(snap.val()));
-
     this.setState({
       firebaseDataResults:data
       })
@@ -234,7 +236,7 @@ class App extends Component {
             </div>
             <div className = "col-md-8 graficas">
 
-            <div style={{ width: '100%', height: '70vh' }}>
+            <div style={{ width: '100%', height: '75vh' }}>
             <ResponsiveContainer>
               <BarChart
                 data={this.state.graphData}
