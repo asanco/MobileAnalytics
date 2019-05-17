@@ -569,12 +569,12 @@ class App extends Component {
       if(data[i].hasOwnProperty("items")){
         var items = Object.values(data[i].items);
         for(var j = 0; items.length; j++){
-          if(items[j].hasOwnProperty("estado")){
+          //if(items[j].hasOwnProperty("estado")){
             /*if(data[i].items[j].estado === "NO_RESPONDIDO"){
               activeLobbies++;
               return;
             }*/
-            }
+          //  }
         }
       }
     }
@@ -592,26 +592,26 @@ class App extends Component {
 
     const preguntasAnalitica = [
       { label: "Select...", value: 0 },
-      { label: "¿Cuál es el protocolo de pruebas más aplicado por día?", value: 1 },
-      { label: "¿Cuál es el test más utilizado en las pruebas ordenado por fecha?", value: 2 },
-      { label: "¿Cuál es el examinado que más protocolos ha presentado ordenado por fecha?", value: 3 },
+      { label: "¿Cuál es el protocolo de pruebas más aplicado?", value: 1 },
+      { label: "¿Cuál es el test más utilizado en las pruebas?", value: 2 },
+      { label: "¿Cual es la frecuencia de protocolos realizados por fecha?", value: 3 },
       { label: "¿Qué cantidad de protocolos ha presentado cierto examinado?", value: 4 },
-      { label: "¿Cuál es el promedio de puntaje para cierto ítem?", value: 5 },
-      { label: "¿Cuál es el protocolo más aplicado a examinados entre cierto rango de edad?", value: 6 },
+    //  { label: "¿Cuál es el promedio de puntaje para cierto ítem?", value: 5 },
+    //  { label: "¿Cuál es el protocolo más aplicado a examinados entre cierto rango de edad?", value: 6 },
       { label: "¿Cuál es el protocolo más largo o más corto (según el número de tests)?", value: 7 },
       { label: "¿Cuál es el test con más o con menos ítems?", value: 8 },
       { label: "¿Cuál es el test con más o con menos subtests?", value: 9 },
       { label: "¿Cuál es el subtest con más o con menos items?", value: 10 },
       { label: "¿Cuál es el subtest más utilizado en las pruebas?", value: 11 },
-      { label: "¿Cuantos lobbies están activos en tiempo real?", value: 12 },
+      //{ label: "¿Cuantos lobbies están activos en tiempo real?", value: 12 },
       { label: "¿Cuales son los días que más se aplican protocolos?", value: 13 },
-      { label: "¿Qué tanto se ha realizado de un protocolo aplicado en un lobby?", value: 14 },
-      { label: "¿Cual es el tiempo de realización de un lobby?", value: 15 },
-      { label: "¿Que tantos elementos son visibles o invisibles para el examinado en un cierto test?", value: 16 },
+    //  { label: "¿Qué tanto se ha realizado de un protocolo aplicado en un lobby?", value: 14 },
+      //{ label: "¿Cual es el tiempo de realización de un lobby?", value: 15 },
+      //{ label: "¿Que tantos elementos son visibles o invisibles para el examinado en un cierto test?", value: 16 },
       { label: "¿Cual es la edad promedio de los examinados que usan la aplicación?", value: 17 },
       { label: "¿Cual es la proporción de hombres/mujeres que usan la aplicación?", value: 18 },
       { label: "¿Cual es la proporción de nivel de educación de los examinados que usan la aplicación?", value: 19 },
-      { label: "¿Cual es la proporción de mensajes/items por test?", value: 20 }
+    //  { label: "¿Cual es la proporción de mensajes/items por test?", value: 20 }
     ];
 
     return (
